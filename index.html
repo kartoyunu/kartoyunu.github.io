@@ -25,19 +25,14 @@ body {
     backdrop-filter: blur(15px);
     box-shadow: 0 0 30px rgba(0,0,0,0.5);
     max-width: 90%;
-    animation: fadeIn 1.5s ease-in-out;
 }
 
-img {
+video {
     width: 100%;
     max-width: 300px;
     border-radius: 20px;
     margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 20px;
-    margin-bottom: 20px;
+    display: none; /* Başta gizli */
 }
 
 button {
@@ -54,38 +49,30 @@ button {
 button:hover {
     transform: scale(1.1);
 }
-
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
-}
 </style>
 </head>
 
 <body>
 
 <div class="card">
-    <img src="foto.jpg" alt="Foto">
-    <h1> لقد وقعت ضحية لهجوم الرجل الملتحي.</h1>
-    <button onclick="toggleMusic()">تخلص من</button>
+
+    <video id="myVideo">
+        <source src="video.mp4" type="video/mp4">
+    </video>
+
+    <h1>لقد وقعت ضحية لهجوم الرجل الملتحي.</h1>
+    <button onclick="playVideo()">تشغيل الفيديو</button>
+
 </div>
 
-<audio id="music" loop>
-    <source src="muzik.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-let music = document.getElementById("music");
-let button = document.querySelector("button");
+function playVideo() {
+    let video = document.getElementById("myVideo");
+    let button = document.querySelector("button");
 
-function toggleMusic() {
-    if (music.paused) {
-        music.play();
-        button.innerHTML = "تخلص من";
-    } else {
-        music.pause();
-        button.innerHTML = "تخلص من";
-    }
+    video.style.display = "block"; // videoyu göster
+    video.play(); // oynat
+    button.style.display = "none"; // butonu gizle
 }
 </script>
 
