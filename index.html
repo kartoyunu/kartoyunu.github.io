@@ -1,36 +1,93 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>Benim Sitem</title>
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            text-align: center;
-            font-family: Arial, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benim Özel Sayfam</title>
 
-        img {
-            width: 400px;
-            margin-top: 50px;
-            border-radius: 20px;
-        }
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1e1e2f, #3a3a6a);
+    font-family: Arial, sans-serif;
+    color: white;
+}
 
-        h1 {
-            margin-top: 20px;
-        }
-    </style>
+.card {
+    text-align: center;
+    background: rgba(255,255,255,0.08);
+    padding: 30px;
+    border-radius: 25px;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    max-width: 90%;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    color: white;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+</style>
 </head>
+
 <body>
 
-    <img src="foto.jpg" alt="Benim Foto">
-    
-    <h1>Buraya istediğin yazıyı yazabilirsin</h1>
+<div class="card">
+    <img src="foto.jpg" alt="Foto">
+    <h1>Buraya istediğin yazıyı yazabilirsin 💫</h1>
+    <button onclick="toggleMusic()">🎵 Müziği Başlat</button>
+</div>
 
-    <audio autoplay loop>
-        <source src="muzik.mp3" type="audio/mpeg">
-    </audio>
+<audio id="music" loop>
+    <source src="muzik.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let music = document.getElementById("music");
+let button = document.querySelector("button");
+
+function toggleMusic() {
+    if (music.paused) {
+        music.play();
+        button.innerHTML = "⏸ Müziği Durdur";
+    } else {
+        music.pause();
+        button.innerHTML = "🎵 Müziği Başlat";
+    }
+}
+</script>
 
 </body>
 </html>
